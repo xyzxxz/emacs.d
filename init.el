@@ -1,8 +1,8 @@
 ;;; init.el --- load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-(setenv "HOME" "D:/xyzxxz/emacs.d")
-(setenv "PATH" "D:/xyzxxz/emacs.d")
+(setenv "HOME" "/home/vmxyz/")
+(setenv "PATH" "/home/vmxyz/.emacs.d/")
 (setq user-emacs-directory "~/")
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
