@@ -1,0 +1,10 @@
+.emacs.d
+eshell
+*/#.el*
+org-persist
+recentf
+projectile-bookmarks.eld
+transient
+org-clock-save.el
+custom.el
+.cache

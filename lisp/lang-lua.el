@@ -1,13 +1,10 @@
-;;; init-lua.el --- lua language config -*- lexical-binding: t -*-
+;;; lang-lua.el --- Support for lua programming -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (use-package lua-mode
-  :defer t
   :init
-  (setq lua-indent-level 2))
+  (setq-default lua-indent-level 4))
 
-(use-package moonscript
-  :defer t)
 
 (provide 'lang-lua)
-;;; init-lua.el ends here
+;;; lang-lua.el ends here

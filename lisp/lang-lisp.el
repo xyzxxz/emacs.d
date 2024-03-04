@@ -1,42 +1,48 @@
-;;; init-lisp.el --- Emacs lisp settings, and common config for other lisps -*- lexical-binding: t -*-
+;;; lang-lisp.el --- Emacs lisp settings, and common config for other lisps -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (setq-default debugger-bury-or-kill 'kill)
 
+(use-package elisp-slime-nav)
 
-;; Make C-x C-e run 'eval-region if the region is active
-(defun eval-last-sexp-or-region (prefix)
-  "Eval region from BEG to END if active, otherwise the last sexp."
-  (interactive "P")
-  (if (and (mark) (use-region-p))
-      (eval-region (min (point) (mark)) (max (point) (mark)))
-    (pp-eval-last-sexp prefix)))
+(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+  (add-hook hook 'elisp-slime-nav-mode))
+(add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "ELisp")))
 
-(global-set-key [remap eval-expression] 'pp-eval-expression)
+(setq-default initial-scratch-message
+              (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n"))
 
-(with-eval-after-load 'lisp-mode
-  (define-key emacs-lisp-mode-map (kbd "C-x C-e") 'eval-last-sexp-or-region)
-  (define-key emacs-lisp-mode-map (kbd "C-c C-e") 'pp-eval-expression))
+(use-package ipretty
+  :config
+  (add-hook 'after-init-hook 'ipretty-mode))
 
+(setq load-prefer-newer t)
 
-(defun load-this-file ()
-  "Load the current file or buffer.
-The current directory is temporarily added to `load-path'.
-When there is no current file, eval the current buffer."
-  (interactive)
-  (let ((load-path (cons default-directory load-path))
-	(file (buffer-file-name)))
-    (if file
-	(progn
-	  (save-some-buffers nil (apply-partially 'derived-mode-p 'emacs-lisp-mode))
-	  (load-file (buffer-file-name))
-	  (message "Loaded %s" file))
-      (eval-buffer)
-      (message "Evaluated %s" (current-buffer)))))
+(use-package immortal-scratch
+  :config
+  (add-hook 'after-init-hook 'immortal-scratch-mode))
 
-(with-eval-after-load 'lisp-mode
-  (define-key emacs-lisp-mode-map (kbd "C-c C-l") 'load-this-file))
+(require 'derived)
 
+(use-package macrostep
+  :config
+  (with-eval-after-load 'lisp-mode
+    (define-key emacs-lisp-mode-map (kbd "C-c x") 'macrostep-expand)))
+
+;; A quick way to jump to the definition of a function given its key binding
+(global-set-key (kbd "C-h K") 'find-function-on-key)
+
+(use-package rainbow-mode
+  :config
+  (add-hook 'help-mode-hook 'rainbow-mode))
+
+(use-package highlight-quoted
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode))
+
+(use-package cl-libify)
+
+(use-package cask-mode)
 
 (provide 'lang-lisp)
-;;; init-lisp.el ends here
+;;; lang-lisp.el ends here

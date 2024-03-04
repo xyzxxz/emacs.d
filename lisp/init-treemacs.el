@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (use-package treemacs
-  :bind (("M-0"    . treemacs-select-window)
+  :bind (("M-0"     . treemacs-select-window)
 	 ("C-x t 1" . treeamcs-delete-other-windows) 
 	 ("C-x t t" . treemacs)
 	 ("C-x t f" . treemacs-find-file)
@@ -22,11 +22,17 @@
   :config
   (treemacs-load-theme "nerd-icons"))
 
+(use-package treemacs-magit
+  :hook ((magit-post-commit
+          git-commit-post-finish
+          magit-post-stage
+          magit-post-unstage)
+          . treemacs-magit--schedule-update))
+
 (use-package treemacs-tab-bar
   :demand t
   :config
   (treemacs-set-scope-type 'Tabs))
-
 
 (provide 'init-treemacs)
 ;;; init-treemacs.el ends here

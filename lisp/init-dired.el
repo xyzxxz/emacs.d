@@ -1,35 +1,26 @@
 ;;; init-dired.el --- Dired customisations -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-(use-package dired
-  :ensure nil
-  :config
-  (setq dired-dwim-target t
-	      dired-hide-details-hide-symlink-targets nil
-	      dired-auto-revert-buffer #'dired-buffer-stale-p
-	      dired-recursive-copies 'always
-	      dired-recursive-deletes 'always)
-  (when (or (memq system-type '(gnu gnu/linux))
-	    (string= (file-name-nondirectory insert-directory-program) "gls"))
-    (setq dired-listing-switches
-	        (concat dired-listing-switches " -- group-directories-first -v"))))
+(setq-default dired-dwim-target t)
 
-(use-package dired-quick-sort)
-
-(use-package dired-x
-  :defer nil
-  :commands dired-kill-buffer-jump
-  :bind (("C-c f j" . dired-jump)
-	 ("C-x C-j" . dired-jump)
-	 ("C-x C-j" . dired-jump))
-  :init
-  (add-hook 'dired-mode-hook #'dired-omit-mode)
-  :after dired
-  :config
-  (setq dired-omit-verbose nil))
+;; Prefer g-prefixed coreutils version of standard utilities when available
+(let ((gls (executable-find "gls")))
+  (when gls (setq insert-directory-program gls)))
 
 (use-package diredfl
-  :hook (dired-mode . diredfl-mode))
+  :after dired
+  :config
+  (diredfl-global-mode)
+  (require 'dired-x))
+
+;; Hook up dired-x global bindings without loading it up-front
+(define-key ctl-x-map "\C-j" 'dired-jump)
+(define-key ctl-x-4-map "\C-j" 'dired-jump-other-window)
+
+(with-eval-after-load 'dired
+  (setq dired-recursive-deletes 'top))
+
+
 
 (use-package nerd-icons-dired
   :diminish

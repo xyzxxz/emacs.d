@@ -1,6 +1,7 @@
-;;; init-rust.el --- Initialize Rust configurations -*- lexical-binding: t -*-
+;;; lang-rust.el --- Support for the Rust language -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-(use-package rustic)
+(use-package rust-mode)
+
 (provide 'lang-rust)
-;;; init-rust.el ends here
+;;; lang-rust.el ends here
