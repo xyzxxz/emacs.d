@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: vue3 <style scss>
+# key: scss
+# --
+<style scoped lang="scss">
+$0
+<style/>

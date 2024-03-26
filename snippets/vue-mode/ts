@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: vue3 script ts
+# key: ts
+# --
+<script setup lang="ts">
+$0
+<script/>

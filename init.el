@@ -3,8 +3,6 @@
 ;;; Code:
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(defconst *is-a-win* (eq system-type 'darwin))
-
 ;; Adjust garbage collection threshold for warly startup
 (setq gc-cons-threshold (* 128 1024 1024))
 
@@ -36,75 +34,21 @@
   (require 'use-package)
   (setq use-package-verbose t))
 
-;; Environment fixup
-(use-package exec-path-from-shell
-  :ensure t
-  :config
-  (when (or (memq window-system '(mac ns x pgtk))
-	    (unless (memq system-type '(ms-dos windows-nt))
-	      (daemonp)))
-    (exec-path-from-shell-initialize)))
-
-;; General performance tuning
-(use-package gcmh
-  :ensure t
-  :config
-  (setq gcmh-high-cons-threshold (* 128 1024 1024))
-  (add-hook 'after-init-hook (lambda ()
-			       (gcmh-mode)
-			       (diminish 'gcmh-mode))))
-
-(setq jit-lock-defer-time 0)
-
-(require 'diminish)
-
 ;; Settings for tracking recent files
 (add-hook 'after-init-hook 'recentf-mode)
 (setq-default recentf-max-saved-items 1000)
 
-(require 'init-theme)
-(require 'init-gui-frames)
-(require 'init-hydra)
-(require 'init-dired)
-(require 'init-isearch)
-(require 'init-ibuffer)
-(require 'init-flymake)
-(require 'init-eglot)
-(require 'init-minibuffer)
-;;Settings for hippie-expand
-(global-set-key (kbd "M-/") 'hippie-expand)
-(setq hippie-expand-try-functions-list '(try-complete-file-name-partially
-					 try-complete-file-name
-					 try-expand-dabbrev
-					 try-expand-dabbrev-all-buffers
-					 try-expand-dabbrev-from-kill))
-(require 'init-corfu)
-(require 'init-edit)
-(require 'init-treemacs)
-(require 'init-projectile)
-(require 'init-terminal)
+(require 'diminish)
 
-(require 'lang-css)
-(require 'lang-haskell)
-(require 'lang-html)
-(require 'lang-javascript)
-(require 'lang-lisp)
-(require 'lang-lua)
-(require 'lang-markdown)
-(require 'lang-org)
-(require 'lang-python)
-(require 'lang-rust)
-(require 'lang-toml)
-(require 'lang-yaml)
+(require 'init-config)
+(require 'init-func)
 
-(use-package sudo-edit)
+(xyz/init-modules)
+;; load env file
 
-;;(require 'init-evil)
-;;(require 'init-treemacs)
-;;(require 'lang-c-cpp)
-;;(require 'lang-cmake)
-;;(require 'lang-java)
-;;(require 'lang-latex)
+;; load base modules
+;;(load-module (xyz/get-module "base"))
+(xyz/load-module "base")
 
 (provide 'init)
 ;;; init.el ends here

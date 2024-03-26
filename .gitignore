@@ -1,10 +1,6 @@
-.emacs.d
-eshell
-*/#.el*
-org-persist
-recentf
-projectile-bookmarks.eld
-transient
-org-clock-save.el
+/auto-save-list
+/elpa
+*.el~
 custom.el
-.cache
+org-clock-save.el
+recentf
