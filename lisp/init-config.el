@@ -17,8 +17,8 @@
 
 ;; config modules
 ;; ~/.emacs.d/modules
-(defconst xyz-module-directory
-  "~/.emacs.d/modules/")
+(defconst xyz-module-directory (expand-file-name "modules" user-emacs-directory))
+;;  "~/.emacs.d/modules/")
 
 (defvar xyz-modules '())
 
