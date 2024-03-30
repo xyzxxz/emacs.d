@@ -1,7 +1,15 @@
-(use-package web-mode
-  :config
-  (setq web-mode-css-indent-offset 4
-        web-mode-code-indent-offset 4))
+(use-package emmet-mode
+  :ensure t
+  :defer t)
 
-(use-package add-node-modules-path
-  :hook ((web-mode js-mode js2-mode) . add-node-modules-path))
+(use-package web-mode
+  :ensure t
+  :defer t
+  :mode ("\\.html\\'")
+  :config
+  (setq web-mode-markup-indent-offset 4))
+
+(use-package web-beautify
+  :after web-mode
+  :bind (:map web-mode-map
+              ("C-c b" . web-beautify-html)))

@@ -4,11 +4,7 @@
   :config
   (progn
     (setf json-reformat:pretty-string? t
-          json-reformat:indent-width 4)
-
-    (add-hook 'json-mode-hook
-              (lambda ()
-                (setq-local js-indent-level 4)))))
+          json-reformat:indent-width 4)))
 
 (use-package json-reformat
   :ensure t

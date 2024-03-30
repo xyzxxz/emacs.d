@@ -3,10 +3,15 @@
 ;;; Code:
 (defconst xyz-default-modules '("corfu"
                                 "dashboard"
+                                "doom-modeline"
+                                "modus-theme"
+                                "general"
+                                "evil"
+                                "which-key"
                                 "minibuffer"
-                                "theme"
                                 "vertico"
-                                "which-key"))
+                                "consult"
+                                "embark"))
 
 ;;; Some basic preferences
 (setq-default blink-cursor-interval 0.4

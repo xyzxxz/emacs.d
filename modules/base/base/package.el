@@ -6,10 +6,21 @@
 
 (require 'disp-table)
 
+(use-package smartparens
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'smartparens-mode))
+
 (use-package rainbow-delimiters
   :ensure t
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+(use-package rainbow-mode
+  :ensure t
+  :config
+  (setq rainbow-x-colors nil)
+  (add-hook 'prog-mode-hook 'rainbow-mode))
 
 ;;; Cut/copy the current line if no region is active
 (use-package whole-line-or-region
@@ -36,4 +47,6 @@
   :init
   (add-hook 'prog-mode-hook #'highlight-numbers-mode))
 
-(load-default-modules)
+;;(load-default-modules)
+(dolist (m xyz-default-modules)
+  (xyz/load-module m))

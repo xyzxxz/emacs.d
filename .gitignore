@@ -1,5 +1,7 @@
 /auto-save-list
 /elpa
+/transient
+site-lisp/*Zone.Identifier
 *.el~
 custom.el
 org-clock-save.el

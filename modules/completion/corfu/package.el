@@ -22,7 +22,7 @@
 ;; Make Corfu also work in terminals, without disturbing usual behaviour in GUI
 (unless (display-graphic-p)
   (require 'corfu-terminal)
-  (add-hook 'global-corfu-mode 'corfu-terminal-mode))
+  (corfu-terminal-mode))
 
 (use-package nerd-icons-corfu
   :ensure t
