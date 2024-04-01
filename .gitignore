@@ -1,6 +1,7 @@
 /auto-save-list
 /elpa
 /transient
+/straight
 site-lisp/*Zone.Identifier
 *.el~
 custom.el
