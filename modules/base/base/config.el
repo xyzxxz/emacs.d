@@ -10,7 +10,8 @@
                                 "corfu"
                                 "vertico"
                                 "consult"
-                                "embark"))
+                                "embark"
+                                "helpful"))
 
 ;;; Some basic preferences
 (setq-default blink-cursor-interval 0.4

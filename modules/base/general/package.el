@@ -41,7 +41,7 @@
 
   ;; buffer
   ;; see 'bufler' and 'popper'
-  (patrl/leader-keys
+  (xyz/leader-keys
     "b" '(:ignore t :wk "buffer")
     "bb" '(switch-to-buffer :wk "switch buffer") ;; gets overridden by consult
     "bk" '(kill-this-buffer :wk "kill this buffer")

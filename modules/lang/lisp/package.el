@@ -1,3 +1,8 @@
+(general-define-key
+ :states 'normal
+ :keymaps 'emacs-lisp-mode-map
+ "gr" 'xref-find-references)
+
 (setq-default debugger-bury-or-kill 'kill)
 
 (use-package elisp-slime-nav

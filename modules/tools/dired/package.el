@@ -18,6 +18,13 @@
   (setq dired-recursive-deletes 'top))
 
 (use-package dired
+  :straight (:type built-in)
+  :general
+  (:keymaps 'dired-mode-map :states 'normal
+            "q" 'quit-window
+            "j" 'dired-next-line
+            "k" 'dired-previous-line
+            )
   :hook
   (dired-mode . dired-hide-details-mode))
 

@@ -1,6 +1,14 @@
 (use-package embark
   :ensure t
   :after vertico
+  :general
+  (patrl/leader-keys
+     "." 'embark-act) ;; easily accessible 'embark-act' binding.
+  ("C-;" 'embark-dwim)
+  (:keymaps 'vertico-map
+            "C-." 'embark-act)
+  (:keymaps 'embark-heading-map
+            "l" 'org-id-store-link)
   :config
   (define-key vertico-map (kbd "C-c C-o") 'embark-export)
   (define-key vertico-map (kbd "C-c C-c") 'embark-act)
