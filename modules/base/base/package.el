@@ -1,3 +1,9 @@
+(use-package electric
+  :straight (:type built-in)
+  :init
+  (electric-pair-mode +1) ;; automatically insert closing parens
+  (setq electric-pair-preserve-balance nil)) ;; more annoying than useful
+
 ;; Change global font size easily
 (use-package default-text-scale
   :ensure t

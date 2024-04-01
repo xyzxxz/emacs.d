@@ -17,12 +17,6 @@
   (evil-set-initial-state 'dashboard-mode 'normal)
   (evil-set-initial-state 'eshell-mode 'insert))
 
-(use-package evil-collection 
-  :ensure t
-  :after evil
-  :config
-  (evil-collection-init))
-
 (use-package evil-surround
   :ensure t
   :after evil

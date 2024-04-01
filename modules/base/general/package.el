@@ -2,6 +2,7 @@
   :ensure t
   :config
   (general-evil-setup)
+  
   (general-create-definer xyz/leader-keys
     :states '(normal insert visual emacs)
     :keymaps 'override
@@ -36,4 +37,12 @@
   (xyz/leader-keys
     "f" '(:ignore t :wk "file")
     "ff" '(find-file :wk "find file") ;; gets overridden by consult
-    "fs" '(save-buffer :wk "save file")))
+    "fs" '(save-buffer :wk "save file"))
+
+  ;; buffer
+  ;; see 'bufler' and 'popper'
+  (patrl/leader-keys
+    "b" '(:ignore t :wk "buffer")
+    "bb" '(switch-to-buffer :wk "switch buffer") ;; gets overridden by consult
+    "bk" '(kill-this-buffer :wk "kill this buffer")
+    "br" '(revert-buffer :wk "reload buffer")))

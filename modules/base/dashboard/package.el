@@ -4,6 +4,7 @@
   (dashboard-setup-startup-hook)
   (setq dashboard-banner-logo-title "Welcome to Emacs"
         dashboard-startup-banner 'logo
+        dashboard-display-icons-p t
         dashboard-icon-type 'nerd-icons
         dashboard-items '((recents . 7)
                           (agenda . 7))

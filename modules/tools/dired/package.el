@@ -18,14 +18,6 @@
   (setq dired-recursive-deletes 'top))
 
 (use-package dired
-  :general
-  (xyz/leader-keys
-    "fd" '(dired :wk "dired")
-    "fj" '(dired :wk "dired jump"))
-  (:keymaps 'dired-mode-map
-            :states 'normal
-            "q" 'kill-current-buffer
-            "l" 'dired-find-file)
   :hook
   (dired-mode . dired-hide-details-mode))
 
@@ -47,6 +39,5 @@
 
 
 (use-package dired-hide-dotfiles
-  :load-path "site-lisp/"
   :ensure t
   :hook (dired-mode . dired-hide-dotfiles-mode))

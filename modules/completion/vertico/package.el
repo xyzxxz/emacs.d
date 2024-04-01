@@ -1,14 +1,6 @@
 (use-package vertico
   :ensure t
   :hook (after-init . vertico-mode)
-  :general
-  (:keymaps 'vertico-map
-            ;; keybindings to cycle through vertico results.
-            "C-j" 'vertico-next
-            "C-k" 'vertico-previous
-            "C-f" 'vertico-exit)
-  (:keymaps 'minibuffer-local-map
-            "M-h" 'backward-kill-word)
   :config
   (setq enable-recursive-minibuffers t)
   (setq vertico-resize nil

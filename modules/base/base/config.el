@@ -1,14 +1,13 @@
 ;;; config.el --- default load modules -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-(defconst xyz-default-modules '("corfu"
-                                "dashboard"
-                                "doom-modeline"
-                                "modus-theme"
-                                "general"
+(defconst xyz-default-modules '("general"
                                 "evil"
                                 "which-key"
-                                "minibuffer"
+                                "modus-theme"
+                                "doom-modeline"
+                                "dashboard"
+                                "corfu"
                                 "vertico"
                                 "consult"
                                 "embark"))
