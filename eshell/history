@@ -1,2 +1,10 @@
 ls
 exit
+ls
+la
+eza
+eza -l
+eza -l --icons
+eza -l 
+cd
+ls
