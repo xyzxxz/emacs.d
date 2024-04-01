@@ -30,10 +30,12 @@
   (dired-mode . dired-hide-details-mode))
 
 (use-package nerd-icons-dired
+  :ensure t
   :diminish
   :hook (dired-mode . nerd-icons-dired-mode))
 
 (use-package ranger
+  :ensure t
   :after dired
   :init (setq ranger-override-dired t)
   :config

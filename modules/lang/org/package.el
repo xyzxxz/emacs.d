@@ -58,6 +58,7 @@
                 "h" '(org-agenda-previous-line)))
 
 (use-package evil-org
+  :ensure t
   :after org
   :hook (org-mode . (lambda () evil-org-mode))
   :config
@@ -72,78 +73,11 @@
     :keymaps 'org-mode-map
     "lc" '(org-cliplink :wk "cliplink")))
 
-(define-key global-map (kbd "C-c l") 'org-store-link)
-(define-key global-map (kbd "C-c a") 'org-agenda)
-
-(setq org-log-done t
-      org-catch-invisible-edits 'show
-      org-export-coding-system 'utf-8 
-      org-html-validation-link nil
-      org-export-kill-product-buffer-when-displayed t
-      org-tags-column 80)
-
-;; Re-align tags when window shape changes
-(with-eval-after-load 'org-agenda
-  (add-hook 'org-agenda-mode-hook
-            (lambda ()
-              (add-hook 'window-configuration-change-hook
-                        'org-agenda-align-tags nil t))))
-
 (use-package writeroom-mode
   :ensure t)
 
 (use-package org-barin
   :ensure t)
-
-(setq org-support-shift-select t)
-
-(global-set-key (kbd "C-c c") 'org-capture)
-
-(setq org-refile-use-cache nil)
-
-;; Targets include this file and any file contributing to the agenda - up to 5 levels deep
-(setq org-refile-targets '((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5)))
-
-(with-eval-after-load 'org-agenda
-  (add-to-list 'org-agenda-after-show-hook 'org-show-entry))
-
-(advice-add 'org-refile :after (lambda (&rest _) (org-save-all-org-buffers)))
-
-;; Targets start with the file name - allows creating level 1 tasks
-;;(setq org-refile-use-outline-path (quote file))
-(setq org-refile-use-outline-path t)
-(setq org-outline-path-complete-in-steps nil)
-
-;; Allow refile to create parent tasks with confirmation
-(setq org-refile-allow-creating-parent-nodes 'confirm)
-
-
-(setq-default org-agenda-clockreport-parameter-plist '(:link t :maxlevel 3))
-
-(add-hook 'org-agenda-mode-hook 'hl-line-mode)
-
-;;; Org clock
-
-;; Save the running clock and all clock history when exiting Emacs, load it on startup
-(with-eval-after-load 'org
-  (org-clock-persistence-insinuate))
-(setq org-clock-persist t)
-(setq org-clock-in-resume t)
-
-;; Save clock data and notes in the LOGBOOK drawer
-(setq org-clock-into-drawer t)
-;; Save state changes in the LOGBOOK drawer
-(setq org-log-into-drawer t)
-;; Removes clocked tasks with 0:00 duration
-(setq org-clock-out-remove-zero-time-clocks t)
-
-;; Show clock sums as hours and minutes, not "n days" etc.
-(setq org-time-clocksum-format
-      '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
-
-(with-eval-after-load 'org-clock
-  (define-key org-clock-mode-line-map [header-line mouse-2] 'org-clock-goto)
-  (define-key org-clock-mode-line-map [header-line mouse-1] 'org-clock-menu))
 
 (use-package org-pomodoro
   :ensure t
