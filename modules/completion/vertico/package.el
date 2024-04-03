@@ -7,7 +7,7 @@
             "C-j" 'vertico-next
             "C-k" 'vertico-previous
             "C-f" 'vertico-exit
-            "C-w" 'vertico-directory-delete-word
+            "C-w" 'vertico-directory-delete-word)
   (:keymaps 'minibuffer-local-map
             "M-h" 'backward-kill-word)
   :config
