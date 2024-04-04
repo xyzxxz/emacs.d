@@ -8,10 +8,18 @@
                                 "doom-modeline"
                                 "dashboard"
                                 "corfu"
+                                "flymake"
                                 "vertico"
                                 "consult"
                                 "embark"
-                                "helpful"))
+                                "helpful"
+                                "eglot"
+                                "dired"
+                                "terminal"
+                                "cc"
+                                "lisp"
+                                "org"
+                                "markdown"))
 
 ;;; Some basic preferences
 (setq-default blink-cursor-interval 0.4
