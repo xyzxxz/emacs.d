@@ -10,6 +10,3 @@
   :init
   (load-theme 'modus-vivendi-deuteranopia :no-confirm))
 
-(use-package mixed-pitch
-  :ensure t
-  :hook (text-mode . mix-pitch-mode))

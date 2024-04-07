@@ -39,7 +39,8 @@
 ;;(setq package-archives '(("gnu"   . "http://1.15.88.122/gnu/")
 ;;                         ("melpa" . "http://1.15.88.122/melpa/")))
 ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "http://1.15.88.122/org") t)
+;;(add-to-list 'package-archives '("org" . "http://1.15.88.122/org") t)
+(add-to-list 'package-archives '("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/") t)
 (package-initialize)
 
 ;; use-package

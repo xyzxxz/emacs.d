@@ -8,7 +8,7 @@
                                 "doom-modeline"
                                 "dashboard"
                                 "corfu"
-                                "flymake"
+;;                                "flymake"
                                 "vertico"
                                 "consult"
                                 "embark"
@@ -16,7 +16,7 @@
                                 "eglot"
                                 "dired"
                                 "terminal"
-                                "cc"
+;;                                "cc"
                                 "lisp"
                                 "org"
                                 "markdown"))
